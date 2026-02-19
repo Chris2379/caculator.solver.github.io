@@ -29,15 +29,24 @@
       cursor: pointer;
     }
 
-    .game-container {
-      width:1200px;
-      height: 1200px;
+    /* Make the game container bigger */
+    #gameContainer {
+      width: 1600px; /* bigger width */
+      height: 900px; /* bigger height */
     }
 
-    .game-container iframe {
+    #gameContainer iframe {
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    /* Optional: make it responsive */
+    @media (max-width: 1800px) {
+      #gameContainer {
+        width: 90%;
+        height: 70%;
+      }
     }
   </style>
 </head>
@@ -47,21 +56,27 @@
 
 <button id="fullscreenBtn">Fullscreen</button>
 
-  <div class="game-frame"><iframe data-testid="test_app_frame" id="test_app_frame" allowfullscreen="" allow="autoplay; 
-                            fullscreen; camera; focus-without-user-activation *; monetization; gamepad;
-             keyboard-map *; xr-spatial-tracking; clipboard-write" name="appFrame" scrolling="no" sandbox="allow-forms allow-modals 
-                            allow-orientation-lock allow-pointer-lock
-                allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin
-                allow-downloads" src="https://db2.ducklit.com/2022/unity/highway-traffic/pre.html" style="width: 100%; height: 100%; 
-                            border: none;"></iframe></div>
+<!-- Give the div an ID so JS can find it -->
+<div id="gameContainer">
+  <iframe data-testid="test_app_frame" id="test_app_frame"
+          allowfullscreen
+          allow="autoplay; fullscreen; camera; focus-without-user-activation *; monetization; gamepad; keyboard-map *; xr-spatial-tracking; clipboard-write"
+          name="appFrame"
+          scrolling="no"
+          sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin allow-downloads"
+          src="https://db2.ducklit.com/2022/unity/highway-traffic/pre.html">
+  </iframe>
+</div>
 
- <script>
+<script>
 const container = document.getElementById("gameContainer");
 const button = document.getElementById("fullscreenBtn");
 
 button.addEventListener("click", () => {
   if (!document.fullscreenElement) {
-    container.requestFullscreen();
+    container.requestFullscreen().catch(err => {
+      alert(`Error attempting to enable fullscreen: ${err.message}`);
+    });
     button.textContent = "Exit Fullscreen";
   } else {
     document.exitFullscreen();
@@ -71,4 +86,4 @@ button.addEventListener("click", () => {
 </script>
 
 </body>
-</html> 
+</html>
