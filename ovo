@@ -40,11 +40,9 @@ html, body {
 <button id="fullscreenBtn">Fullscreen</button>
 
 <div class="game-container" id="gameContainer">
-  <iframe
-    src="https://ducklit.com/class/ovo.html"
-    allowfullscreen>
-  </iframe>
-</div>
+  <iframe id="gameFrame" width="1060" height="660" src="https://unblocked-games.s3.amazonaws.com/games/2023/ovo/index.html" marginwidth="0" marginheight="0" hspace="0" vspace="0" 
+frameborder="0" scrolling="no" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="true" 
+allowfullscreen="allowfullscreen" data-wg-content="true"></iframe>
 
 <script>
 const container = document.getElementById("gameContainer");
