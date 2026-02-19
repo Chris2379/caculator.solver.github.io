@@ -1,134 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Have Fun</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #111;
-      font-family: Arial, sans-serif;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Have Fun</title>
 
-    h1 {
-      font-size: 50px;
-      margin: 30px 0;
-    }
-
-    .games-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-    }
-
-    .game-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .game-card img {
-      width: 200px;
-      cursor: pointer;
-      border: 3px solid white;
-      border-radius: 10px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .game-card img:hover {
-      transform: scale(1.05);
-      border-color: yellow;
-    }
-
-    .game-card span {
-      margin-top: 10px;
-      font-size: 18px;
-    }
-  </style>
-</head>
-<body>
-
-<h1>Have fun yo</h1>
-
-  </style>
-
-      
-  .games-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap; /* allows wrapping on smaller screens */
-  }
-
-  .game-card {
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
     text-align: center;
   }
 
+  h1 {
+    margin: 30px 0;
+    font-size: 50px;
+  }
+
+  .games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .game-card {
+    width: 220px;
+    margin: auto;
+  }
+
   .game-card img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover; /* prevents stretching */
-    border-radius: 10px; /* optional: makes it look nicer */
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid white;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .game-card img:hover {
+    transform: scale(1.07);
+    border-color: yellow;
   }
 
   .game-card span {
     display: block;
-    margin-top: 10px;
-    font-weight: bold;
+    margin-top: 12px;
+    font-size: 18px;
   }
-  
-  .game-card img {
-    width: 100%; }
+</style>
+</head>
 
-</style> 
+<body>
+
+<h1>Have Fun Yo</h1>
 
 <div class="games-container">
-  <!-- Game 1 -->
+
   <div class="game-card">
     <a href="game1.html">
-      <img src="icon1.png" alt="Play Game 1">
+      <img src="icon1.png" alt="Stickman GTA City">
     </a>
     <span>Stickman GTA City</span>
   </div>
 
-  <!-- Game 2 -->
   <div class="game-card">
     <a href="game2.html">
-      <img src="drift.png" alt="Play Game 2">
+      <img src="drift.png" alt="Drift King">
     </a>
-    <span>drift king</span>
+    <span>Drift King</span>
   </div>
 
-  <!--Game 3-->
   <div class="game-card">
     <a href="game3.html">
-      <img src="fnaf.png" alt="Play Game 3">
+      <img src="fnaf.png" alt="FNAF">
     </a>
-    <span>Fnaf</span>
+    <span>FNAF</span>
+  </div>
 
-     <!--Game 4-->
   <div class="game-card">
     <a href="game4.html">
-      <img src="highwaytraffic.png" alt="Play Game 4">
-    </a> 
+      <img src="highwaytraffic.png" alt="Highway Traffic">
+    </a>
     <span>Highway Traffic</span>
+  </div>
 
-      <!--Game 5-->
   <div class="game-card">
     <a href="ovo3.html">
-      <img src="ovo.png" alt="Play Game 5">
+      <img src="ovo.png" alt="OvO">
     </a>
     <span>OvO</span>
-   
+  </div>
+
 </div>
 
 </body>
