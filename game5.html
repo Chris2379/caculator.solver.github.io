@@ -1,75 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>OvO</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-    }
-
-    .page-title {
-      color: white;
-      font-size: 50px;
-      margin: 20px 0;
-      font-family: Arial, sans-serif;
-    }
-
-    #fullscreenBtn {
-      margin-bottom: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-   <style>
+<meta charset="UTF-8">
+<title>OvO</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #111;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .page-title {
+    color: white;
+    font-size: 50px;
+    margin: 10px 0;
+    font-family: Arial, sans-serif;
+  }
   #gameContainer {
     width: 100vw;
-    height: calc(100vh - 80px); /* full height minus title */
+    height: calc(100vh - 80px);
   }
-
   #gameContainer iframe {
     width: 100%;
     height: 100%;
     border: none;
   }
 </style>
-    }
-  </style>
 </head>
 <body>
 
 <h1 class="page-title">OvO</h1>
-<button id="fullscreenBtn">Fullscreen</button>
 
-<div class="game-frame"><iframe data-testid="test_app_frame" id="test_app_frame" allowfullscreen="" allow="autoplay;
-                          fullscreen; camera; focus-without-user-activation *; monetization; gamepad;
-             keyboard-map *; xr-spatial-tracking; clipboard-write" name="appFrame" scrolling="no" sandbox="allow-forms allow-modals 
-                          allow-orientation-lock allow-pointer-lock
-                allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin
-                allow-downloads" src="https://db.ducklit.com/html/ovo/index.html" style="width: 100%; height: 100%; border: none;"></iframe></div>
-
-<script>
-const container = document.getElementById("gameContainer");
-const button = document.getElementById("fullscreenBtn");
-
-button.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-      alert(`Fullscreen failed: ${err.message}`);
-    });
-    button.textContent = "Fullscreen";
-  }
-});
-</script>
+<div id="gameContainer">
+  <iframe src="https://db.ducklit.com/html/ovo/index.html" 
+          allowfullscreen
+          scrolling="no">
+  </iframe>
+</div>
 
 </body>
 </html>
