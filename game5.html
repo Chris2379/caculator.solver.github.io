@@ -11,20 +11,17 @@
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
   }
   .page-title {
     color: white;
     font-size: 50px;
+    text-align: center;
     margin: 10px 0;
     font-family: Arial, sans-serif;
   }
   #gameContainer {
     width: 100vw;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 80px); /* leave space for title */
   }
   #gameContainer iframe {
     width: 100%;
@@ -36,12 +33,8 @@
 <body>
 
 <h1 class="page-title">OvO</h1>
-
 <div id="gameContainer">
-  <iframe src="https://db.ducklit.com/html/ovo/index.html" 
-          allowfullscreen
-          scrolling="no">
-  </iframe>
+  <iframe src="https://db.ducklit.com/html/ovo/index.html" allowfullscreen scrolling="no"></iframe>
 </div>
 
 </body>
