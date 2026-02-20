@@ -6,6 +6,84 @@
 <title>Preparing for Calculations</title>
 
 <style>
+    /* --- Popup background overlay --- */
+    #popupOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.3s ease;
+      z-index: 9999;
+    }
+    /* --- Popup box --- */
+    #popupBox {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      animation: popupAppear 0.4s ease;
+    }
+    /* --- Close button --- */
+    #closePopup {
+      background: #ff4c4c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    #closePopup:hover {
+      background: #d93c3c;
+    }
+    /* --- Animation --- */
+    @keyframes popupAppear {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    /* --- Show popup --- */
+    #popupOverlay.show {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="popupOverlay">
+    <div id="popupBox">
+      <h2>Wassup</h2>
+      <p>I know no one plays this but me but like.... I'm gonna add games almost daily so like have fun</p>
+      <button id="closePopup">Close</button>
+    </div>
+  </div>
+  <script>
+    // Show popup after page loads
+    window.addEventListener('load', function() {
+      const popup = document.getElementById('popupOverlay');
+      popup.classList.add('show');
+    });
+    // Close popup when button is clicked
+    document.getElementById('closePopup').addEventListener('click', function() {
+      const popup = document.getElementById('popupOverlay');
+      popup.classList.remove('show');
+    });
+    
 body {
   margin: 0;
   font-family: Arial, sans-serif;
