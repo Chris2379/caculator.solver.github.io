@@ -45,3 +45,21 @@ html, body {
     allowfullscreen>
   </iframe>
 </div>
+
+  <script>
+const container = document.getElementById("gameContainer");
+const button = document.getElementById("fullscreenBtn");
+
+button.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    container.requestFullscreen();
+    button.textContent = "Exit Fullscreen";
+  } else {
+
+    button.textContent = "Fullscreen";
+  }
+});
+</script>
+
+</body>
+</html>
