@@ -41,7 +41,7 @@ html, body {
 
 <div class="game-container" id="gameContainer">
   <iframe
-    src="https://mathlete.pages.dev/index.html/"
+    src="https://mathlete.pages.dev/index.html"
     allowfullscreen>
   </iframe>
 </div>
