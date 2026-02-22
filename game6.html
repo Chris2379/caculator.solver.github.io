@@ -1,94 +1,129 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sled Rider 3D</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sled Rider 3D</title>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
 
-    .page-title {
-      color: white;
-      font-size: 50px;
-      margin: 20px 0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
+.page-title {
+  color: white;
+  font-size: 50px;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
-    #fullscreenBtn {
-      margin-bottom: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+#fullscreenBtn {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #2ecc71;
+  color: white;
+  border: none;
+  touch-action: manipulation;
+}
 
-    #gameContainer {
-      flex: 1;                /* fill remaining vertical space */
-      width: 95vw;            /* take almost full browser width */
-      max-width: 1900px;      /* optional max width */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+#fullscreenBtn:hover {
+  background: #27ae60;
+}
 
-    #gameContainer iframe {
-      width: 100%;
-      height: calc(95vw * 0.625); /* maintain 16:10 aspect ratio */
-      max-height: 90vh;            /* don’t exceed viewport height */
-      border: none;
-    }
-  </style>
+#gameContainer {
+  flex: 1;
+  width: 95vw;
+  max-width: 1900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameContainer iframe {
+  width: 100%;
+  height: calc(95vw * 0.625); /* 16:10 aspect ratio */
+  max-height: 90vh;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  #gameContainer iframe {
+    width: 100vw;
+    height: 100vh; /* fill the screen on mobile */
+  }
+  #fullscreenBtn {
+    display: none; /* hide button on mobile */
+  }
+}
+</style>
 </head>
 <body>
 
-  <h1 class="page-title">Sled Rider</h1>
-  <button id="fullscreenBtn">Fullscreen</button>
+<h1 class="page-title">Sled Rider</h1>
+<button id="fullscreenBtn">Fullscreen</button>
 
- <div class="game-container" id="gameContainer">
+<div class="game-container" id="gameContainer">
   <iframe
     src="https://db.ducklit.com/html/snow_rider_3d/index.html"
-    allowfullscreen>
+    allowfullscreen
+    tabindex="0"
+    allow="autoplay; fullscreen; gamepad; keyboard-map *">
   </iframe>
 </div>
-  
-    <script>
-  const container = document.getElementById("gameContainer");
-    const button = document.getElementById("fullscreenBtn");
 
-    button.addEventListener("click", () => {
-      if (!document.fullscreenElement) {
-        if (container.requestFullscreen) {
-          container.requestFullscreen();
-        } else if (container.webkitRequestFullscreen) {
-          container.webkitRequestFullscreen();
-        } else if (container.mozRequestFullScreen) {
-          container.mozRequestFullScreen();
-        } else if (container.msRequestFullscreen) {
-          container.msRequestFullscreen();
-        }
-        button.textContent = "Exit Fullscreen";
-      } else {
-        document.exitFullscreen();
-        button.textContent = "Fullscreen";
-      }
-    });
-  </script>
+<script>
+const container = document.getElementById("gameContainer");
+const button = document.getElementById("fullscreenBtn");
+const iframe = container.querySelector("iframe");
+
+// Cross-browser fullscreen
+function requestFullscreen(element) {
+  if (element.requestFullscreen) element.requestFullscreen();
+  else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
+  else if (element.msRequestFullscreen) element.msRequestFullscreen();
+}
+
+// Desktop fullscreen toggle
+button.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    requestFullscreen(container);
+    button.textContent = "Exit Fullscreen";
+    setTimeout(() => iframe.focus(), 300);
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    else if (document.msExitFullscreen) document.msExitFullscreen();
+    button.textContent = "Fullscreen";
+  }
+});
+
+// Force iframe focus on click/tap
+container.addEventListener("click", () => iframe.focus());
+window.addEventListener("load", () => iframe.focus());
+
+// **Mobile auto fullscreen on first tap anywhere**
+if (/Mobi|Android/i.test(navigator.userAgent)) {
+  const onFirstTap = () => {
+    requestFullscreen(container);
+    iframe.focus();
+    button.style.display = "none"; // hide button
+    window.removeEventListener("touchstart", onFirstTap);
+  };
+  window.addEventListener("touchstart", onFirstTap, { once: true });
+}
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
