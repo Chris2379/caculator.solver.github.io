@@ -14,27 +14,30 @@ body {
   text-align: center;
 }
 
-h1 {
-  margin: 30px 0;
-  font-size: 50px;
-}
-
-  #searchBar {
+/* ---------- STICKY SEARCH BAR ---------- */
+#searchBar {
   padding: 12px 15px;
   width: 90%;
   max-width: 500px;
-  margin-bottom: 30px;
+  margin: 20px auto;
+  display: block;
   font-size: 16px;
   border-radius: 8px;
   border: 2px solid #fff;
   background: #222;
   color: white;
-    
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* ---------- GAME CARDS ---------- */
 .games-container {
   display: flex;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
+  padding-bottom: 50px;
 }
 
 .game-card {
@@ -61,13 +64,17 @@ h1 {
   font-weight: bold;
 }
 
-/* ---------- POPUP STYLES ---------- */
+/* Hide game cards dynamically */
+.game-card.hidden {
+  display: none;
+}
 
+/* ---------- POPUP STYLES ---------- */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.92); /* darker overlay */
+  background: rgba(0,0,0,0.92);
   backdrop-filter: blur(6px);
   z-index: 1000;
 
@@ -114,215 +121,93 @@ h1 {
 
 <body>
 
+<!-- SEARCH BAR AT THE TOP -->
+<input type="text" id="searchBar" placeholder="Search games...">
+
 <h1>Have fun yo dont get caught</h1>
 
 <div class="games-container">
-
-  <div class="game-card">
-    <a href="game1.html"><img src="icon1.png"></a>
-    <span>Stickman GTA City</span>
-  </div>
-
-  <div class="game-card">
-    <a href="game2.html"><img src="drift.png"></a>
-    <span>Drift King</span>
-  </div>
-
-  <div class="game-card">
-    <a href="game3.html"><img src="fnaf.png"></a>
-    <span>Five Nights At Epsteins</span>
-  </div>
-
-  <div class="game-card">
-    <a href="game4.html"><img src="highwaytraffic.png"></a>
-    <span>Highway Traffic</span>
-  </div>
-
-  <div class="game-card">
-    <a href="game5.html"><img src="ovo.png"></a>
-    <span>OvO</span>
-  </div>
+  <div class="game-card"><a href="game1.html"><img src="icon1.png"></a><span>Stickman GTA City</span></div>
   
-  <div class="game-card">
-    <a href="game6.html"><img src="snowrider.png"></a>
-    <span>Snowrider</span>
-  </div>
-
-   <div class="game-card">
-    <a href="game7.html"><img src="escapeprison.png"></a>
-    <span>Prison Escape</span>
-  </div>
-
-   <div class="game-card">
-    <a href="game8.html"><img src="basketball.png"></a>
-    <span>Basketball Stars</span>
-  </div>
-
-   <div class="game-card">
-    <a href="game9.html"><img src="motox3m.png"></a>
-    <span>Motox3m</span>
-  </div>
-
-   <div class="game-card">
-    <a href="game10.html"><img src="golforbit.png"></a>
-    <span>Golf Orbit</span>
-  </div>
-     
-  <div class="game-card">
-    <a href="game11.html"><img src="drivemad.png"></a>
-    <span>Drive Mad</span>
-  </div>
-
-  <div class="game-card">
-    <a href="game12.html"><img src="backflip.png"></a>
-    <span>Backflip Challenge</span>
-  </div>
- 
-  <div class="game-card">
-    <a href="game13.html"><img src="gun.png"></a>
-    <span>Gun Spin</span>
-  </div>
-
-  <div class="game-card">
-    <a href="game14.html"><img src="deadly.png"></a>
-    <span>Deadly Descent</span>
-  </div>
-
+  <div class="game-card"><a href="game2.html"><img src="drift.png"></a><span>Drift King</span></div>
   
-  <div class="game-card">
-    <a href="game15.html"><img src="game.png"></a>
-    <span>Wheelie Bike</span>
-  </div>
-
-   <div class="game-card">
-    <a href="game16.html"><img src="football.png"></a>
-    <span>Football Bros</span>
-  </div>
+  <div class="game-card"><a href="game3.html"><img src="fnaf.png"></a><span>Five Nights At Freddy's</span></div>
   
-   <div class="game-card">
-    <a href="game17.html"><img src="Arena.png"></a>
-    <span>Racecar Survival🛻</span>
-  </div>
- 
-  <div class="game-card">
-    <a href="game18.html"><img src="obby.png"></a>
-    <span>Obby but your on a Bike🚴‍♂️</span>
-  </div>
- 
-  <div class="game-card">
-    <a href="game19.html"><img src="knight.png"></a>
-    <span>Hollow Knight (goated)</span>
-  </div>
-
-  <div class="game-card">
-    <a href="carsim.html"><img src="carsim.png"></a>
-    <span>Eddy's Carsim</span>
-  </div>
-
-   <div class="game-card">
-    <a href="eggy.html"><img src="eggy.png"></a>
-    <span>Eggy Car</span>
-  </div>
-
-  <div class="game-card">
-    <a href="Basketballrandom.html"><img src="random.png"></a>
-    <span>Basketball Random</span>
-  </div>
-
+  <div class="game-card"><a href="game4.html"><img src="highwaytraffic.png"></a><span>Highway Traffic</span></div>
   
-  <div class="game-card">
-    <a href="pizzatower.html"><img src="pizza.png"></a>
-    <span>Pizza Tower</span>
-  </div>
-
-  <div class="game-card">
-    <a href="bitlife.html"><img src="bitlife.png"></a>
-    <span>Bitlife</span>
-  </div>
-
-  <div class="game-card">
-    <a href="impossiblequiz.html"><img src="impossible.png"></a>
-    <span>Impossible Quiz🐡</span>
-  </div>
-
-  <div class="game-card">
-    <a href="solarsmash.html"><img src="smash.png"></a>
-    <span>Solar Smash</span>
-  </div>
-
-  <div class="game-card">
-    <a href="thorns.html"><img src="thorns.png"></a>
-    <span>Thorns and Balloon (very ahmet)</span>
-  </div>
+  <div class="game-card"><a href="game5.html"><img src="ovo.png"></a><span>OvO</span></div>
   
-  <div class="game-card">
-    <a href="escape.html"><img src="escape.png"></a>
-    <span>Escape Car</span>
-  </div>
-
-  <div class="game-card">
-    <a href="game20.html"><img src="jetpack.png"></a>
-    <span>Jetpack Joyride</span>
-  </div>
-
+  <div class="game-card"><a href="game6.html"><img src="snowrider.png"></a><span>Snowrider</span></div>
   
-  <div class="game-card">
-    <a href="cargoracing.html"><img src="jeep.png"></a>
-    <span>Cargo Racing</span>
-  </div>
-
-  <div class="game-card">
-    <a href="game21.html"><img src="cookie.png"></a>
-    <span>Cookie Clicker</span>
-  </div>
+  <div class="game-card"><a href="game7.html"><img src="escapeprison.png"></a><span>Prison Escape</span></div>
   
-  <div class="game-card">
-    <a href="archers.html"><img src="archer.png"></a>
-    <span>Ragdoll</span>
-  </div>
-
-   
-  <div class="game-card">
-    <a href="retrobowl.html"><img src="ah.png"></a>
-    <span>Retro Bowl</span>
-  </div>
-
+  <div class="game-card"><a href="game8.html"><img src="basketball.png"></a><span>Basketball Stars</span></div>
   
-  <div class="game-card">
-    <a href="drifter.html"><img src="drifter.png"></a>
-    <span>Police Chase Drift</span>
-  </div>
-
-    <div class="game-card">
-    <a href="slope.html"><img src="slope.png"></a>
-    <span>Very Real Slope</span>
-  </div>
-
-   <div class="game-card">
-    <a href="cluster.html"><img src="cluster.png"></a>
-    <span>Cluster Rush</span>
-  </div>
-
-   <div class="game-card">
-    <a href="stickmanhook.html"><img src="hook.png"></a>
-    <span>Stickman Hook</span>
-  </div>
-
-<div class="game-card">
-    <a href="backrooms.html"><img src="backrooms.png"></a>
-    <span>Backrooms</span>
-  </div>
+  <div class="game-card"><a href="game9.html"><img src="motox3m.png"></a><span>Motox3m</span></div>
   
+  <div class="game-card"><a href="game10.html"><img src="golforbit.png"></a><span>Golf Orbit</span></div>
+  
+  <div class="game-card"><a href="game11.html"><img src="drivemad.png"></a><span>Drive Mad</span></div>
+  
+  <div class="game-card"><a href="game12.html"><img src="backflip.png"></a><span>Backflip Challenge</span></div>
+  
+  <div class="game-card"><a href="game13.html"><img src="gun.png"></a><span>Gun Spin</span></div>
+  
+  <div class="game-card"><a href="game14.html"><img src="deadly.png"></a><span>Deadly Descent</span></div>
+  
+  <div class="game-card"><a href="game15.html"><img src="game.png"></a><span>Wheelie Bike</span></div>
+  
+  <div class="game-card"><a href="game16.html"><img src="football.png"></a><span>Football Bros</span></div>
+  
+  <div class="game-card"><a href="game17.html"><img src="Arena.png"></a><span>Racecar Survival🛻</span></div>
+  
+  <div class="game-card"><a href="game18.html"><img src="obby.png"></a><span>Obby but your on a Bike🚴‍♂️</span></div>
+  
+  <div class="game-card"><a href="game19.html"><img src="knight.png"></a><span>Hollow Knight (goated)</span></div>
+  
+  <div class="game-card"><a href="carsim.html"><img src="carsim.png"></a><span>Eddy's Carsim</span></div>
+  
+  <div class="game-card"><a href="eggy.html"><img src="eggy.png"></a><span>Eggy Car</span></div>
+  
+  <div class="game-card"><a href="Basketballrandom.html"><img src="random.png"></a><span>Basketball Random</span></div>
+  
+  <div class="game-card"><a href="pizzatower.html"><img src="pizza.png"></a><span>Pizza Tower</span></div>
+  
+  <div class="game-card"><a href="bitlife.html"><img src="bitlife.png"></a><span>Bitlife</span></div>
+  
+  <div class="game-card"><a href="impossiblequiz.html"><img src="impossible.png"></a><span>Impossible Quiz🐡</span></div>
+  
+  <div class="game-card"><a href="solarsmash.html"><img src="smash.png"></a><span>Solar Smash</span></div>
+  
+  <div class="game-card"><a href="thorns.html"><img src="thorns.png"></a><span>Thorns and Balloon (very ahmet)</span></div>
+  
+  <div class="game-card"><a href="escape.html"><img src="escape.png"></a><span>Escape Car</span></div>
+  
+  <div class="game-card"><a href="game20.html"><img src="jetpack.png"></a><span>Jetpack Joyride</span></div>
+  
+  <div class="game-card"><a href="cargoracing.html"><img src="jeep.png"></a><span>Cargo Racing</span></div>
+  
+  <div class="game-card"><a href="game21.html"><img src="cookie.png"></a><span>Cookie Clicker</span></div>
+  
+  <div class="game-card"><a href="archers.html"><img src="archer.png"></a><span>Ragdoll</span></div>
+  
+  <div class="game-card"><a href="retrobowl.html"><img src="ah.png"></a><span>Retro Bowl</span></div>
+  <div class="game-card"><a href="drifter.html"><img src="drifter.png"></a><span>Police Chase Drift</span></div>
+  
+  <div class="game-card"><a href="slope.html"><img src="slope.png"></a><span>Very Real Slope</span></div>
+  
+  <div class="game-card"><a href="cluster.html"><img src="cluster.png"></a><span>Cluster Rush</span></div>
+  
+  <div class="game-card"><a href="stickmanhook.html"><img src="hook.png"></a><span>Stickman Hook</span></div>
+  
+  <div class="game-card"><a href="backrooms.html"><img src="backrooms.png"></a><span>Backrooms</span></div>
 </div>
 
 <!-- POPUP -->
 <div id="popup" class="modal" onclick="outsideClick(event)">
   <div class="modal-content">
     <span class="close" onclick="closePopup()">×</span>
-
-    <!-- 🔥 CHANGE IMAGE FILE NAME HERE -->
     <img src="thanos-dance.png" alt="Popup Image">
-
     <h2>Wassup</h2>
     <p>yo whats up guys this is a new website dont tell vyon pls he will snitch alright bye cuh✌️iykyk aboliyaowsuf is chill go glaze him pls also tell mauricio he is mario alr? cya bru who da man</p>
   </div>
@@ -332,11 +217,9 @@ h1 {
 function openPopup() {
   document.getElementById("popup").style.display = "flex";
 }
-
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
-
 function outsideClick(event) {
   if (event.target.id === "popup") {
     closePopup();
@@ -348,7 +231,7 @@ window.onload = function() {
   openPopup();
 }
 
-  // ---------- SEARCH FUNCTIONALITY ----------
+// SEARCH FUNCTIONALITY
 const searchBar = document.getElementById('searchBar');
 const games = document.querySelectorAll('.game-card');
 
