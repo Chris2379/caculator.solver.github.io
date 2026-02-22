@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Answers</title>
 <style>
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
     overflow: hidden;
     background: black;
 }
@@ -15,6 +17,9 @@ html, body {
 .game-frame {
     position: fixed;
     inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .game-frame iframe {
@@ -22,18 +27,57 @@ html, body {
     height: 100%;
     border: none;
 }
+
+/* Prevent accidental scrolling on mobile */
+body, html {
+    overscroll-behavior: none;
+    touch-action: none;
+}
 </style>
 </head>
 <body>
 
-<div class="game-frame">
+<div class="game-frame" id="gameContainer">
     <iframe 
         src="https://db.ducklit.com/html/fnaf/index.html"
         allowfullscreen
         allow="fullscreen; autoplay; gamepad"
         sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms allow-popups"
+        tabindex="0"
     ></iframe>
 </div>
+
+<script>
+const container = document.getElementById("gameContainer");
+const iframe = container.querySelector("iframe");
+
+// Focus iframe immediately
+iframe.focus();
+
+// Auto fullscreen on mobile
+if (/Mobi|Android/i.test(navigator.userAgent)) {
+    const enterFullscreen = () => {
+        if (container.requestFullscreen) container.requestFullscreen();
+        else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen(); // Safari
+        else if (container.msRequestFullscreen) container.msRequestFullscreen(); // IE
+        iframe.focus();
+    };
+
+    // Try to enter fullscreen immediately
+    enterFullscreen();
+
+    // Some browsers still require a tap, so we add a fallback
+    const firstTap = () => {
+        enterFullscreen();
+        window.removeEventListener("touchstart", firstTap);
+    };
+    window.addEventListener("touchstart", firstTap, { once: true });
+}
+
+// Keep focus on iframe for input
+container.addEventListener("click", () => iframe.focus());
+window.addEventListener("load", () => iframe.focus());
+</script>
 
 </body>
 </html>
