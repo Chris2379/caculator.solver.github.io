@@ -1,8 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Calculations</title>
 
 <style>
@@ -10,23 +10,32 @@ html, body {
   margin: 0;
   padding: 0;
   background: #111;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
 }
 
 #fullscreenBtn {
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 14px;
+  font-size: 18px;
+  background: #222;
+  color: white;
+  border: none;
+  width: 100%;
   cursor: pointer;
 }
 
+#fullscreenBtn:active {
+  background: #333;
+}
+
 .game-container {
-  width: 900px;
-  height: 550px;
+  flex: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .game-container iframe {
@@ -38,11 +47,13 @@ html, body {
 </head>
 
 <body>
-<button id="fullscreenBtn">Fullscreen</button>
+
+<button id="fullscreenBtn">Tap for Fullscreen</button>
 
 <div class="game-container" id="gameContainer">
   <iframe
     src="https://db.ducklit.com/html/backroomsv1.5/index.html"
+    allow="fullscreen; autoplay; gamepad; pointer-lock"
     allowfullscreen>
   </iframe>
 </div>
@@ -53,15 +64,22 @@ const button = document.getElementById("fullscreenBtn");
 
 button.addEventListener("click", () => {
   if (!document.fullscreenElement) {
-    container.requestFullscreen();
+    container.requestFullscreen().catch(err => {
+      console.log("Fullscreen failed:", err);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+document.addEventListener("fullscreenchange", () => {
+  if (document.fullscreenElement) {
     button.textContent = "Exit Fullscreen";
   } else {
-
-    button.textContent = "Fullscreen";
+    button.textContent = "Tap for Fullscreen";
   }
 });
 </script>
 
 </body>
 </html>
-
