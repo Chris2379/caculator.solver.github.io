@@ -19,6 +19,17 @@ h1 {
   font-size: 50px;
 }
 
+  #searchBar {
+  padding: 12px 15px;
+  width: 90%;
+  max-width: 500px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  background: #222;
+  color: white;
+    
 .games-container {
   display: flex;
   justify-content: center;
@@ -336,6 +347,22 @@ function outsideClick(event) {
 window.onload = function() {
   openPopup();
 }
+
+  // ---------- SEARCH FUNCTIONALITY ----------
+const searchBar = document.getElementById('searchBar');
+const games = document.querySelectorAll('.game-card');
+
+searchBar.addEventListener('input', () => {
+  const query = searchBar.value.toLowerCase();
+  games.forEach(game => {
+    const title = game.querySelector('span').textContent.toLowerCase();
+    if (title.includes(query)) {
+      game.classList.remove('hidden');
+    } else {
+      game.classList.add('hidden');
+    }
+  });
+});
 </script>
 
 </body>
