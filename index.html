@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Study Materials</title>
-
+<title>Game Portal</title>
 <style>
 body {
   margin: 0;
@@ -13,8 +12,6 @@ body {
   color: white;
   text-align: center;
 }
-
-/* ---------- STICKY SEARCH BAR ---------- */
 #searchBar {
   padding: 12px 15px;
   width: 90%;
@@ -30,26 +27,18 @@ body {
   top: 0;
   z-index: 999;
 }
-
-/* ---------- RANDOM GAME BUTTON ---------- */
-#randomGameBtn {
-  padding: 12px 25px;
-  font-size: 16px;
-  background: #1e90ff;
+button {
+  padding: 8px 18px;
+  margin: 5px;
+  border-radius: 6px;
   border: none;
-  border-radius: 8px;
-  color: white;
   cursor: pointer;
-  margin-bottom: 20px;
-  transition: transform 0.2s, background 0.2s;
+  background: #1e90ff;
+  color: white;
 }
-
-#randomGameBtn:hover {
+button:hover {
   background: #63b3ff;
-  transform: scale(1.05);
 }
-
-/* ---------- GAME CARDS ---------- */
 .games-container {
   display: flex;
   justify-content: center;
@@ -57,34 +46,32 @@ body {
   flex-wrap: wrap;
   padding-bottom: 50px;
 }
-
 .game-card {
   text-align: center;
 }
-
 .game-card img {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 10px;
   border: 3px solid white;
   transition: 0.2s;
 }
-
 .game-card img:hover {
   transform: scale(1.05);
   border-color: yellow;
 }
-
 .game-card span {
   display: block;
   margin-top: 10px;
   font-weight: bold;
 }
-
-/* Hide game cards dynamically */
-.game-card.hidden {
-  display: none;
+.pagination {
+  margin-bottom: 40px;
+}
+.active-page {
+  background: yellow;
+  color: black;
 }
 
 /* ---------- POPUP STYLES ---------- */
@@ -111,7 +98,6 @@ body {
   text-align: center;
   position: relative;
   border: 2px solid #333;
-  animation: pop 0.25s ease;
 }
 
 .modal-content img {
@@ -120,11 +106,6 @@ body {
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 20px;
-}
-
-@keyframes pop {
-  from { transform: scale(0.85); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
 }
 
 .close {
@@ -136,100 +117,160 @@ body {
 }
 </style>
 </head>
-
 <body>
 
-<!-- SEARCH BAR -->
 <input type="text" id="searchBar" placeholder="Search games...">
+<h1>Game Portal</h1>
 
-<h1>Have fun yo dont get caught</h1>
-
-<!-- RANDOM GAME BUTTON -->
-<button id="randomGameBtn">🎲 Play A Random Game Yo</button>
-
-<!-- GAMES CONTAINER -->
-<div class="games-container">
-  <div class="game-card"><a href="game1.html"><img src="icon1.png"></a><span>Stickman GTA City</span></div>
-  <div class="game-card"><a href="game2.html"><img src="drift.png"></a><span>Drift King</span></div>
-  <div class="game-card"><a href="game3.html"><img src="fnaf.png"></a><span>Five Nights At Freddy's</span></div>
-  <div class="game-card"><a href="game4.html"><img src="highwaytraffic.png"></a><span>Highway Traffic</span></div>
-  <div class="game-card"><a href="game5.html"><img src="ovo.png"></a><span>OvO</span></div>
-  <div class="game-card"><a href="game6.html"><img src="snowrider.png"></a><span>Snowrider</span></div>
-  <div class="game-card"><a href="game7.html"><img src="escapeprison.png"></a><span>Prison Escape</span></div>
-  <div class="game-card"><a href="game8.html"><img src="basketball.png"></a><span>Basketball Stars</span></div>
-  <div class="game-card"><a href="game9.html"><img src="motox3m.png"></a><span>Motox3m</span></div>
-  <div class="game-card"><a href="game10.html"><img src="golforbit.png"></a><span>Golf Orbit</span></div>
-  <div class="game-card"><a href="game11.html"><img src="drivemad.png"></a><span>Drive Mad</span></div>
-  <div class="game-card"><a href="game12.html"><img src="backflip.png"></a><span>Backflip Challenge</span></div>
-  <div class="game-card"><a href="game13.html"><img src="gun.png"></a><span>Gun Spin</span></div>
-  <div class="game-card"><a href="game14.html"><img src="deadly.png"></a><span>Deadly Descent</span></div>
-  <div class="game-card"><a href="game15.html"><img src="game.png"></a><span>Wheelie Bike</span></div>
-  <div class="game-card"><a href="game16.html"><img src="football.png"></a><span>Football Bros</span></div>
-  <div class="game-card"><a href="game17.html"><img src="Arena.png"></a><span>Racecar Survival🛻</span></div>
-  <div class="game-card"><a href="game18.html"><img src="obby.png"></a><span>Obby but your on a Bike🚴‍♂️</span></div>
-  <div class="game-card"><a href="game19.html"><img src="knight.png"></a><span>Hollow Knight (goated)</span></div>
-  <div class="game-card"><a href="carsim.html"><img src="carsim.png"></a><span>Eddy's Carsim</span></div>
-  <div class="game-card"><a href="eggy.html"><img src="eggy.png"></a><span>Eggy Car</span></div>
-  <div class="game-card"><a href="Basketballrandom.html"><img src="random.png"></a><span>Basketball Random</span></div>
-  <div class="game-card"><a href="pizzatower.html"><img src="pizza.png"></a><span>Pizza Tower</span></div>
-  <div class="game-card"><a href="bitlife.html"><img src="bitlife.png"></a><span>Bitlife</span></div>
-  <div class="game-card"><a href="impossiblequiz.html"><img src="impossible.png"></a><span>Impossible Quiz🐡</span></div>
-  <div class="game-card"><a href="solarsmash.html"><img src="smash.png"></a><span>Solar Smash</span></div>
-  <div class="game-card"><a href="thorns.html"><img src="thorns.png"></a><span>Thorns and Balloon (very ahmet)</span></div>
-  <div class="game-card"><a href="escape.html"><img src="escape.png"></a><span>Escape Car</span></div>
-  <div class="game-card"><a href="game20.html"><img src="jetpack.png"></a><span>Jetpack Joyride</span></div>
-  <div class="game-card"><a href="cargoracing.html"><img src="jeep.png"></a><span>Cargo Racing</span></div>
-  <div class="game-card"><a href="game21.html"><img src="cookie.png"></a><span>Cookie Clicker</span></div>
-  <div class="game-card"><a href="archers.html"><img src="archer.png"></a><span>Ragdoll</span></div>
-  <div class="game-card"><a href="retrobowl.html"><img src="ah.png"></a><span>Retro Bowl</span></div>
-  <div class="game-card"><a href="drifter.html"><img src="drifter.png"></a><span>Police Chase Drift</span></div>
-  <div class="game-card"><a href="slopetry4.html"><img src="slope.png"></a><span>Slope</span></div>
-  <div class="game-card"><a href="cluster.html"><img src="cluster.png"></a><span>Cluster Rush</span></div>
-  <div class="game-card"><a href="stickmanhook.html"><img src="hook.png"></a><span>Stickman Hook</span></div>
-  <div class="game-card"><a href="backrooms.html"><img src="backrooms.png"></a><span>Backrooms</span></div>
-  <div class="game-card"><a href="run3.html"><img src="run3.png"></a><span>Run 3</span></div>
-  <div class="game-card"><a href="snek.html"><img src="snek.io"></a><span>Snek.io</span></div>
-  <div class="game-card"><a href="2048.html"><img src="2048.png"></a><span>2048</span></div>
+<div>
+  <button onclick="filterCategory('All')">All</button>
+  <button onclick="filterCategory('Driving')">Driving</button>
+  <button onclick="filterCategory('Sports')">Sports</button>
+  <button onclick="filterCategory('Action')">Action</button>
 </div>
 
+<button id="randomGameBtn">🎲 Play Random</button>
+
+<div class="games-container" id="gamesContainer"></div>
+<div class="pagination" id="pagination"></div>
+
 <!-- POPUP -->
-<div id="popup" class="modal" onclick="outsideClick(event)">
+<div id="popup" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closePopup()">×</span>
     <img src="thanos-dance.png" alt="Popup Image">
     <h2>Wassup</h2>
-    <p>yo whats up guys this is a new website dont tell vyon pls he will snitch alright bye cuh✌️ iykyk aboliyaowsuf is chill go glaze him pls also tell mauricio he is mario alr? cya bru who da man</p>
+    <p>Yo what’s up guys! This is a new website. Don’t tell anyone 😎. Enjoy the games!</p>
   </div>
 </div>
 
 <script>
+// ---------------- STEP 1: STORE ALL GAMES IN JS ----------------
+const gamesList = [
+  {name:"Stickman GTA City", img:"icon1.png", file:"game1.html", category:"Action"},
+  {name:"Drift King", img:"drift.png", file:"game2.html", category:"Driving"},
+  {name:"Five Nights At Freddy's", img:"fnaf.png", file:"game3.html", category:"Action"},
+  {name:"Highway Traffic", img:"highwaytraffic.png", file:"game4.html", category:"Driving"},
+  {name:"OvO", img:"ovo.png", file:"game5.html", category:"Action"},
+  {name:"Snowrider", img:"snowrider.png", file:"game6.html", category:"Driving"},
+  {name:"Prison Escape", img:"escapeprison.png", file:"game7.html", category:"Action"},
+  {name:"Basketball Stars", img:"basketball.png", file:"game8.html", category:"Sports"},
+  {name:"Motox3m", img:"motox3m.png", file:"game9.html", category:"Driving"},
+  {name:"Golf Orbit", img:"golforbit.png", file:"game10.html", category:"Sports"},
+  {name:"Drive Mad", img:"drivemad.png", file:"game11.html", category:"Driving"},
+  {name:"Backflip Challenge", img:"backflip.png", file:"game12.html", category:"Action"},
+  {name:"Gun Spin", img:"gun.png", file:"game13.html", category:"Action"},
+  {name:"Deadly Descent", img:"deadly.png", file:"game14.html", category:"Action"},
+  {name:"Wheelie Bike", img:"game.png", file:"game15.html", category:"Driving"},
+  {name:"Football Bros", img:"football.png", file:"game16.html", category:"Sports"},
+  {name:"Racecar Survival", img:"Arena.png", file:"game17.html", category:"Driving"},
+  {name:"Obby but you're on a Bike", img:"obby.png", file:"game18.html", category:"Action"},
+  {name:"Hollow Knight", img:"knight.png", file:"game19.html", category:"Action"},
+  {name:"Eddy's Carsim", img:"carsim.png", file:"carsim.html", category:"Driving"},
+  {name:"Eggy Car", img:"eggy.png", file:"eggy.html", category:"Driving"},
+  {name:"Basketball Random", img:"random.png", file:"Basketballrandom.html", category:"Sports"},
+  {name:"Pizza Tower", img:"pizza.png", file:"pizzatower.html", category:"Action"},
+  {name:"Bitlife", img:"bitlife.png", file:"bitlife.html", category:"Action"},
+  {name:"Impossible Quiz", img:"impossible.png", file:"impossiblequiz.html", category:"Action"},
+  {name:"Solar Smash", img:"smash.png", file:"solarsmash.html", category:"Action"},
+  {name:"Thorns and Balloon", img:"thorns.png", file:"thorns.html", category:"Action"},
+  {name:"Escape Car", img:"escape.png", file:"escape.html", category:"Driving"},
+  {name:"Jetpack Joyride", img:"jetpack.png", file:"game20.html", category:"Action"},
+  {name:"Cargo Racing", img:"jeep.png", file:"cargoracing.html", category:"Driving"},
+  {name:"Cookie Clicker", img:"cookie.png", file:"game21.html", category:"Action"},
+  {name:"Ragdoll", img:"archer.png", file:"archers.html", category:"Action"},
+  {name:"Retro Bowl", img:"ah.png", file:"retrobowl.html", category:"Sports"},
+  {name:"Police Chase Drift", img:"drifter.png", file:"drifter.html", category:"Driving"},
+  {name:"Slope", img:"slope.png", file:"slopetry4.html", category:"Action"},
+  {name:"Cluster Rush", img:"cluster.png", file:"cluster.html", category:"Action"},
+  {name:"Stickman Hook", img:"hook.png", file:"stickmanhook.html", category:"Action"},
+  {name:"Backrooms", img:"backrooms.png", file:"backrooms.html", category:"Action"},
+  {name:"Run 3", img:"run3.png", file:"run3.html", category:"Action"},
+  {name:"Snek.io", img:"snek.io", file:"snek.html", category:"Action"},
+  {name:"2048", img:"2048.png", file:"2048.html", category:"Action"}
+];
+
+// ---------------- VARIABLES ----------------
+const gamesContainer = document.getElementById("gamesContainer");
+const searchInput = document.getElementById("searchBar");
+const pagination = document.getElementById("pagination");
+let currentCategory = "All";
+let currentPage = 1;
+const gamesPerPage = 15;
+
 // ---------------- POPUP ----------------
-function openPopup() { document.getElementById("popup").style.display = "flex"; }
-function closePopup() { document.getElementById("popup").style.display = "none"; }
-function outsideClick(event) { if(event.target.id === "popup") closePopup(); }
-window.onload = function() { openPopup(); }
+const popup = document.getElementById("popup");
+function openPopup(){ popup.style.display = "flex"; }
+function closePopup(){ popup.style.display = "none"; }
+window.onload = () => {
+  openPopup();
+  updateGames();
+};
 
-// ---------------- SEARCH FUNCTION ----------------
-const searchBar = document.getElementById('searchBar');
-const games = document.querySelectorAll('.game-card');
-
-searchBar.addEventListener('input', () => {
-  const query = searchBar.value.toLowerCase();
-  games.forEach(game => {
-    const title = game.querySelector('span').textContent.toLowerCase();
-    if(title.includes(query)) game.classList.remove('hidden');
-    else game.classList.add('hidden');
+// ---------------- FILTER & SEARCH ----------------
+function getFilteredGames(){
+  const query = searchInput.value.toLowerCase();
+  return gamesList.filter(game => {
+    const matchCategory = currentCategory==="All" || game.category===currentCategory;
+    const matchSearch = game.name.toLowerCase().includes(query);
+    return matchCategory && matchSearch;
   });
+}
+
+function updateGames(){
+  const filtered = getFilteredGames();
+  renderGames(filtered);
+}
+
+// ---------------- RENDER ----------------
+function renderGames(filteredGames){
+  gamesContainer.innerHTML="";
+  const start = (currentPage-1)*gamesPerPage;
+  const end = start+gamesPerPage;
+  filteredGames.slice(start,end).forEach(game=>{
+    const card=document.createElement("div");
+    card.className="game-card";
+    card.dataset.category=game.category;
+    card.innerHTML=`<a href="${game.file}"><img src="${game.img}"></a><span>${game.name}</span>`;
+    gamesContainer.appendChild(card);
+  });
+  createPagination(filteredGames.length);
+}
+
+// ---------------- CATEGORY ----------------
+function filterCategory(category){
+  currentCategory=category;
+  currentPage=1;
+  updateGames();
+}
+
+// ---------------- PAGINATION ----------------
+function createPagination(totalGames){
+  pagination.innerHTML="";
+  const totalPages=Math.ceil(totalGames/gamesPerPage);
+  for(let i=1;i<=totalPages;i++){
+    const btn=document.createElement("button");
+    btn.textContent=i;
+    if(i===currentPage) btn.classList.add("active-page");
+    btn.addEventListener("click",()=>{currentPage=i; updateGames();});
+    pagination.appendChild(btn);
+  }
+}
+
+// ---------------- SEARCH ----------------
+searchInput.addEventListener("input",()=>{
+  currentPage=1;
+  updateGames();
 });
 
-// ---------------- RANDOM GAME BUTTON ----------------
-const gameLinks = document.querySelectorAll('.game-card a');
-document.getElementById('randomGameBtn').addEventListener('click', () => {
-  const randomIndex = Math.floor(Math.random() * gameLinks.length);
-  const randomLink = gameLinks[randomIndex].href;
-  window.location.href = randomLink;
+// ---------------- RANDOM ----------------
+document.getElementById("randomGameBtn").addEventListener("click",()=>{
+  const filtered = getFilteredGames();
+  if(filtered.length===0) return;
+  const randomIndex = Math.floor(Math.random()*filtered.length);
+  window.location.href = filtered[randomIndex].file;
 });
+
 </script>
-
 </body>
 </html>
