@@ -14,83 +14,12 @@ body {
   text-align: center;
 }
 
+/* HEADER */
 h1 {
   margin-top: 10px;
 }
 
-.backblur {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-   z-index: 9999; 
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-
-.backblur.active {
-  opacity: 1;
-  pointer-events: all;
-}
-  
-.popup {
-  background: gray;
-  position: relative;
-  padding: 20px;
-  border: 3px solid red;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
-  max-height: 85vh;
-  text-align: center;
-   z-index: 9999; 
-  transition: transform 0.3s ease;
-}
-
-.popup:hover {
-  transform: scale(1.05);
-}
-
-.popup img {
-  width: 100%;
-  max-height: 60vh;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
-.popup h2 {
-  font-family: Arial, Sans-Serif;
-  font-size: 25px;
-  color: red;  
-
-.popup p {
-  font-family: Arial, Sans-Serif;
-  font-size: 15px;
-  color: red;   
-}
-    
-
-.closebutton {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 20px;
-  color: yellow;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.closebutton:hover {
-  transform: scale(1.2);
-  color: red;
-}
-    
+/* SEARCH BAR */
 #searchBar {
   padding: 12px 15px;
   width: 90%;
@@ -107,10 +36,10 @@ h1 {
   z-index: 999;
 }
 
+/* CATEGORY BUTTONS */
 .category-buttons {
   margin: 10px 0 20px;
 }
-
 .category-buttons button {
   padding: 8px 18px;
   margin: 5px;
@@ -121,16 +50,15 @@ h1 {
   color: white;
   transition: 0.2s;
 }
-
 .category-buttons button:hover {
   background: #63b3ff;
 }
-
 .category-buttons .active {
   background: yellow;
   color: black;
 }
 
+/* RANDOM BUTTON */
 #randomGameBtn {
   padding: 8px 18px;
   border-radius: 6px;
@@ -140,24 +68,34 @@ h1 {
   color: white;
   margin-bottom: 20px;
 }
-
 #randomGameBtn:hover {
   background: #ff6b81;
 }
 
+/* GAME GRID */
 .games-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 25px;
   padding: 20px;
   max-width: 1300px;
   margin: auto;
 }
-
-.game-card {
-  transition: 0.25s ease;
+@media (max-width: 1000px) {
+  .games-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .games-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+.game-card {
+  width: 100%;
+  transition: 0.25s ease;
+}
 .game-card img {
   width: 100%;
   height: 180px;
@@ -167,32 +105,85 @@ h1 {
   transition: 0.25s ease;
   will-change: transform;
 }
-
 .game-card:hover img {
   border-color: yellow;
   transform: scale(1.05);
 }
-
 .game-card span {
   display: block;
   margin-top: 8px;
   font-weight: bold;
 }
+
+/* POPUP */
+.backblur {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.backblur.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.popup {
+  background: white;
+  color: black;
+  position: relative;
+  padding: 20px;
+  border: 3px solid red;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 85vh;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.popup:hover {
+  transform: scale(1.05);
+}
+.popup img {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.popup h2 {
+  font-family: Arial, sans-serif;
+  font-size: 25px;
+  color: red;
+  margin: 10px 0;
+}
+.popup p {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  color: red;
+  margin: 10px 0;
+}
+.closebutton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.closebutton:hover {
+  transform: scale(1.2);
+  color: red;
+}
 </style>
 </head>
-
-  <script>
-function closePopup() {
-  document.getElementById("popupBg").classList.remove("active");
-}
-
-/* AUTO OPEN WHEN PAGE LOADS */
-window.addEventListener("load", function() {
-  document.getElementById("popupBg").classList.add("active");
-});
-</script>
-
-  <body>
+<body>
 
 <input type="text" id="searchBar" placeholder="Search games...">
 <h1>have fun yo ✌️💀</h1>
@@ -203,10 +194,12 @@ window.addEventListener("load", function() {
   <button onclick="filterCategory('Sports')">Sports</button>
   <button onclick="filterCategory('Action')">Action</button>
   <button onclick="filterCategory('Idle')">Idle</button>
-   <button onclick="filterCategory('Puzzle')">Puzzle</button>
+  <button onclick="filterCategory('Puzzle')">Puzzle</button>
 </div>
-  <button onclick="openPopup()">Open Popup</button>
 
+<button id="randomGameBtn">🎲 Play Random</button>
+
+<!-- POPUP -->
 <div class="backblur" id="popupBg">
   <div class="popup">
     <div class="closebutton" onclick="closePopup()">✖</div>
@@ -216,11 +209,20 @@ window.addEventListener("load", function() {
   </div>
 </div>
 
-<button id="randomGameBtn">🎲 Play Random</button>
-
+<!-- GAMES GRID -->
 <div class="games-container" id="gamesContainer"></div>
 
 <script>
+/* ---------------- POPUP ---------------- */
+function closePopup() {
+  document.getElementById("popupBg").classList.remove("active");
+}
+/* Auto open popup on page load */
+window.addEventListener("load", function() {
+  document.getElementById("popupBg").classList.add("active");
+});
+
+/* ---------------- GAMES ---------------- */
 const gamesList = [
   {name:"Stickman GTA City", img:"icon1.png", file:"game1.html", category:"Action"},
   {name:"Drift King", img:"drift.png", file:"game2.html", category:"Driving"},
@@ -272,7 +274,6 @@ const gamesList = [
 const container = document.getElementById("gamesContainer");
 const searchInput = document.getElementById("searchBar");
 const buttons = document.querySelectorAll(".category-buttons button");
-
 let currentCategory = "All";
 let searchTimeout;
 
@@ -285,27 +286,27 @@ function getFilteredGames(){
 }
 
 function renderGames(){
+  container.innerHTML = "";
   const fragment = document.createDocumentFragment();
-  container.innerHTML="";
 
-  getFilteredGames().forEach(game=>{
-    const card=document.createElement("div");
-    card.className="game-card";
+  getFilteredGames().forEach(game => {
+    const card = document.createElement("div");
+    card.className = "game-card";
 
-    const link=document.createElement("a");
-    link.href=game.file;
+    const link = document.createElement("a");
+    link.href = game.file;
 
-    const img=document.createElement("img");
-    img.src=game.img;
-    img.loading="lazy";
-    img.decoding="async";
-    img.alt=game.name;
+    const img = document.createElement("img");
+    img.src = game.img;
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.alt = game.name;
 
     link.appendChild(img);
     card.appendChild(link);
 
-    const title=document.createElement("span");
-    title.textContent=game.name;
+    const title = document.createElement("span");
+    title.textContent = game.name;
     card.appendChild(title);
 
     fragment.appendChild(card);
@@ -314,6 +315,7 @@ function renderGames(){
   container.appendChild(fragment);
 }
 
+/* CATEGORY FILTER */
 function filterCategory(category){
   currentCategory = category;
   buttons.forEach(btn=>btn.classList.remove("active"));
@@ -321,20 +323,22 @@ function filterCategory(category){
   renderGames();
 }
 
-searchInput.addEventListener("input", ()=>{
+/* SEARCH */
+searchInput.addEventListener("input", () => {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(renderGames, 200);
 });
 
-document.getElementById("randomGameBtn").addEventListener("click",()=>{
+/* RANDOM GAME BUTTON */
+document.getElementById("randomGameBtn").addEventListener("click", () => {
   const games = getFilteredGames();
   if(games.length===0) return;
   const random = games[Math.floor(Math.random()*games.length)];
   window.location.href = random.file;
 });
 
+/* INITIAL RENDER */
 renderGames();
 </script>
-
 </body>
 </html>
