@@ -18,6 +18,50 @@ h1 {
   margin-top: 10px;
 }
 
+.popup {
+  background: #333;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 15px;
+  padding: 20px;
+  border: 3px solid rgba(255,255,255,0.8);
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    inset 0 0 10px rgba(255, 255, 255, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Image */
+.popup img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+    border: 2px solid transparent;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+  100% { box-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+
+/* Text */
+.popup h2 {
+  margin: 0;
+  color: white;
+}
+
+.popup p {
+  color: #ddd;
+  text-align: center;
+}
+  
 #searchBar {
   padding: 12px 15px;
   width: 90%;
@@ -121,6 +165,12 @@ h1 {
   <button onclick="filterCategory('Idle')">Idle</button>
    <button onclick="filterCategory('Puzzle')">Puzzle</button>
 </div>
+  <div class="popup">
+    <div>
+      <img src="thanos-dance.png">
+      (h2)Wassup yo(/h2)
+      (p)Hey guys shout out to everyone that helped make this, and shout out to ahmed. Dont tell vyon and have fun cuh. ✌️
+    </div>
 
 <button id="randomGameBtn">🎲 Play Random</button>
 
