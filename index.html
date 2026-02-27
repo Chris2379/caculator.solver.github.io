@@ -18,6 +18,78 @@ h1 {
   margin-top: 10px;
 }
 
+.backblur {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.backblur.active {
+  opacity: 1;
+  pointer-events: all;
+}
+  
+.popup {
+  background: white;
+  position: relative;
+  padding: 20px;
+  border: 3px solid red;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 85vh;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.popup:hover {
+  transform: scale(1.05);
+}
+
+.popup img {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.popup h2 {
+  font-family: Arial, Sans-Serif;
+  font-size: 25px;
+  font-color: red;
+}
+
+  .popup p {
+     font-family: Arial, Sans-Serif;
+  font-size: 15px;
+  font-color: red;
+  }
+    
+
+.closebutton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.closebutton:hover {
+  transform: scale(1.2);
+  color: red;
+}
+    
 #searchBar {
   padding: 12px 15px;
   width: 90%;
@@ -108,7 +180,18 @@ h1 {
 </style>
 </head>
 
-<body>
+  <script>
+function closePopup() {
+  document.getElementById("popupBg").classList.remove("active");
+}
+
+/* AUTO OPEN WHEN PAGE LOADS */
+window.addEventListener("load", function() {
+  document.getElementById("popupBg").classList.add("active");
+});
+</script>
+
+  <body>
 
 <input type="text" id="searchBar" placeholder="Search games...">
 <h1>have fun yo ✌️💀</h1>
@@ -120,6 +203,16 @@ h1 {
   <button onclick="filterCategory('Action')">Action</button>
   <button onclick="filterCategory('Idle')">Idle</button>
    <button onclick="filterCategory('Puzzle')">Puzzle</button>
+</div>
+  <button onclick="openPopup()">Open Popup</button>
+
+<div class="backblur" id="popupBg">
+  <div class="popup">
+    <div class="closebutton" onclick="closePopup()">✖</div>
+    <img src="thanos-dance.png" alt="Game Image">
+    <h2>Wassup guys</h2>
+    <p>Welcome to my game app, don't get caught, dont tell Vyon and shout out to Maurico/Mario, Very Ahmed, Abowiyusuf, and Shubhy</p>
+  </div>
 </div>
 
 <button id="randomGameBtn">🎲 Play Random</button>
