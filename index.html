@@ -3,254 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neon Game Hub</title>
+<title>Study Materials</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#0a0a12;
-  color:white;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+  text-align: center;
 }
 
-/* HEADER */
-header{
-  text-align:center;
-  padding:20px;
+h1 {
+  margin-top: 10px;
 }
 
-h1{
-  color:#00f7ff;
-  text-shadow:0 0 15px #00f7ff;
-  margin:0;
+#searchBar {
+  padding: 12px 15px;
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  display: block;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  background: #222;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-.controls{
-  margin-top:15px;
+.category-buttons {
+  margin: 10px 0 20px;
 }
 
-select, button{
-  padding:8px 14px;
-  margin:5px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  background:#111;
-  color:#00f7ff;
-  box-shadow:0 0 10px #00f7ff;
+.category-buttons button {
+  padding: 8px 18px;
+  margin: 5px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #1e90ff;
+  color: white;
+  transition: 0.2s;
 }
 
-/* GRID */
-.game-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:20px;
-  padding:20px;
+.category-buttons button:hover {
+  background: #63b3ff;
 }
 
-.card{
-  background:#111;
-  border-radius:15px;
-  padding:10px;
-  cursor:pointer;
-  transition:.3s;
+.category-buttons .active {
+  background: yellow;
+  color: black;
 }
 
-.card:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px #00f7ff;
+#randomGameBtn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #ff4757;
+  color: white;
+  margin-bottom: 20px;
 }
 
-.card img{
-  width:100%;
-  height:130px;
-  object-fit:cover;
-  border-radius:10px;
+#randomGameBtn:hover {
+  background: #ff6b81;
 }
 
-.card h3{
-  font-size:14px;
-  text-align:center;
-  margin:10px 0 0;
+.games-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+  padding: 20px;
+  max-width: 1300px;
+  margin: auto;
 }
 
-/* MODAL */
-.modal{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  backdrop-filter:blur(12px);
-  background:rgba(0,0,0,0.4); /* fallback */
-  z-index:999999;
-}
+.game-card {
+  transition: 0.25s ease;
 }
 
-.modal-content{
-  background:#0f0f18;
-  width:95%;
-  max-width:1000px;
-  border-radius:20px;
-  padding:20px;
-  position:relative;
-  border:3px solid #00f7ff;
-  animation:pulse 2s infinite alternate;
+.game-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid white;
+  transition: 0.25s ease;
+  will-change: transform;
 }
 
-@keyframes pulse{
-  from{box-shadow:0 0 10px #00f7ff;}
-  to{box-shadow:0 0 40px #00f7ff,0 0 80px #00f7ff;}
+.game-card:hover img {
+  border-color: yellow;
+  transform: scale(1.05);
 }
 
-.close{
-  position:absolute;
-  top:10px;
-  right:15px;
-  font-size:22px;
-  cursor:pointer;
-  color:#00f7ff;
-}
-
-iframe{
-  width:100%;
-  height:500px;
-  border:none;
-  border-radius:12px;
-}
-
-@media(max-width:700px){
-  iframe{height:350px;}
+.game-card span {
+  display: block;
+  margin-top: 8px;
+  font-weight: bold;
 }
 </style>
 </head>
+
 <body>
 
-<header>
-  <h1>⚡ Neon Game Hub ⚡</h1>
-  <div class="controls">
-    <select id="categoryFilter">
-      <option value="All">All</option>
-      <option value="Action">Action</option>
-      <option value="Driving">Driving</option>
-      <option value="Sports">Sports</option>
-      <option value="Idle">Idle</option>
-      <option value="Puzzle">Puzzle</option>
-    </select>
-    <button onclick="randomGame()">🎲 Random Game</button>
-  </div>
-</header>
+<input type="text" id="searchBar" placeholder="Search games...">
+<h1>have fun yo ✌️💀</h1>
 
-<div class="game-grid" id="gameGrid"></div>
-
-<!-- POPUP -->
-<div class="modal" id="modal" onclick="outsideClick(event)">
-  <div class="modal-content">
-    <span class="close" onclick="closeGame()">✖</span>
-    <iframe id="gameFrame"></iframe>
-  </div>
+<div class="category-buttons">
+  <button onclick="filterCategory('All')" class="active">All</button>
+  <button onclick="filterCategory('Driving')">Driving</button>
+  <button onclick="filterCategory('Sports')">Sports</button>
+  <button onclick="filterCategory('Action')">Action</button>
+  <button onclick="filterCategory('Idle')">Idle</button>
+   <button onclick="filterCategory('Puzzle')">Puzzle</button>
 </div>
 
+<button id="randomGameBtn">🎲 Play Random</button>
+
+<div class="games-container" id="gamesContainer"></div>
+
 <script>
-const games = [
-{name:"Stickman GTA City", img:"icon1.png", file:"game1.html", category:"Action"},
-{name:"Drift King", img:"drift.png", file:"game2.html", category:"Driving"},
-{name:"Five Nights At Freddy's", img:"fnaf.png", file:"game3.html", category:"Action"},
-{name:"Highway Traffic", img:"highwaytraffic.png", file:"game4.html", category:"Driving"},
-{name:"OvO", img:"ovo.png", file:"game5.html", category:"Action"},
-{name:"Snowrider", img:"snowrider.png", file:"game6.html", category:"Driving"},
-{name:"Prison Escape", img:"escapeprison.png", file:"game7.html", category:"Action"},
-{name:"Basketball Stars", img:"basketball.png", file:"game8.html", category:"Sports"},
-{name:"Motox3m", img:"motox3m.png", file:"game9.html", category:"Driving"},
-{name:"Golf Orbit", img:"golforbit.png", file:"game10.html", category:"Sports"},
-{name:"Drive Mad", img:"drivemad.png", file:"game11.html", category:"Driving"},
-{name:"Backflip Challenge", img:"backflip.png", file:"game12.html", category:"Action"},
-{name:"Gun Spin", img:"gun.png", file:"game13.html", category:"Action"},
-{name:"Deadly Descent", img:"deadly.png", file:"game14.html", category:"Action"},
-{name:"Wheelie Bike", img:"game.png", file:"game15.html", category:"Driving"},
-{name:"Football Bros", img:"football.png", file:"game16.html", category:"Sports"},
-{name:"Racecar Survival", img:"Arena.png", file:"game17.html", category:"Driving"},
-{name:"Obby but you're on a Bike", img:"obby.png", file:"game18.html", category:"Action"},
-{name:"Hollow Knight", img:"knight.png", file:"game19.html", category:"Action"},
-{name:"Eddy's Carsim", img:"carsim.png", file:"carsim.html", category:"Driving"},
-{name:"Eggy Car", img:"eggy.png", file:"eggy.html", category:"Driving"},
-{name:"Basketball Random", img:"random.png", file:"Basketballrandom.html", category:"Sports"},
-{name:"Pizza Tower", img:"pizza.png", file:"pizzatower.html", category:"Action"},
-{name:"Bitlife", img:"bitlife.png", file:"bitlife.html", category:"Idle"},
-{name:"Impossible Quiz", img:"impossible.png", file:"impossiblequiz.html", category:"Action"},
-{name:"Solar Smash", img:"smash.png", file:"solarsmash.html", category:"Action"},
-{name:"Thorns and Balloon", img:"thorns.png", file:"thorns.html", category:"Action"},
-{name:"Escape Car", img:"escape.png", file:"escape.html", category:"Driving"},
-{name:"Jetpack Joyride", img:"jetpack.png", file:"game20.html", category:"Action"},
-{name:"Cargo Racing", img:"jeep.png", file:"cargoracing.html", category:"Driving"},
-{name:"Cookie Clicker", img:"cookie.png", file:"game21.html", category:"Idle"},
-{name:"Ragdoll", img:"archer.png", file:"archers.html", category:"Action"},
-{name:"Retro Bowl", img:"ah.png", file:"retrobowl.html", category:"Sports"},
-{name:"Police Chase Drift", img:"drifter.png", file:"drifter.html", category:"Driving"},
-{name:"Slope", img:"slope.png", file:"slopetry4.html", category:"Action"},
-{name:"Cluster Rush", img:"cluster.png", file:"cluster.html", category:"Action"},
-{name:"Stickman Hook", img:"hook.png", file:"stickmanhook.html", category:"Action"},
-{name:"Backrooms", img:"backrooms.png", file:"backrooms.html", category:"Action"},
-{name:"Run 3", img:"run3.png", file:"run3.html", category:"Action"},
-{name:"Snek.io", img:"snek.png", file:"snek.html", category:"Action"},
-{name:"2048", img:"2048.png", file:"games/2048.html", category:"Action"},
-{name:"Idle Restaurant", img:"idle.png", file:"idle.html", category:"Idle"},
-{name:"Little Alchemy 2", img:"alchemy.png", file:"games/alchemy.html", category:"Puzzle"},
-{name:"Watermelon Game", img:"watermelon.png", file:"games/watermelon.html", category:"Puzzle"},
-{name:"Draw Climber", img:"drawclimber.png", file:"games/drawclimber.html", category:"Action"}
+const gamesList = [
+  {name:"Stickman GTA City", img:"icon1.png", file:"game1.html", category:"Action"},
+  {name:"Drift King", img:"drift.png", file:"game2.html", category:"Driving"},
+  {name:"Five Nights At Freddy's", img:"fnaf.png", file:"game3.html", category:"Action"},
+  {name:"Highway Traffic", img:"highwaytraffic.png", file:"game4.html", category:"Driving"},
+  {name:"OvO", img:"ovo.png", file:"game5.html", category:"Action"},
+  {name:"Snowrider", img:"snowrider.png", file:"game6.html", category:"Driving"},
+  {name:"Prison Escape", img:"escapeprison.png", file:"game7.html", category:"Action"},
+  {name:"Basketball Stars", img:"basketball.png", file:"game8.html", category:"Sports"},
+  {name:"Motox3m", img:"motox3m.png", file:"game9.html", category:"Driving"},
+  {name:"Golf Orbit", img:"golforbit.png", file:"game10.html", category:"Sports"},
+  {name:"Drive Mad", img:"drivemad.png", file:"game11.html", category:"Driving"},
+  {name:"Backflip Challenge", img:"backflip.png", file:"game12.html", category:"Action"},
+  {name:"Gun Spin", img:"gun.png", file:"game13.html", category:"Action"},
+  {name:"Deadly Descent", img:"deadly.png", file:"game14.html", category:"Action"},
+  {name:"Wheelie Bike", img:"game.png", file:"game15.html", category:"Driving"},
+  {name:"Football Bros", img:"football.png", file:"game16.html", category:"Sports"},
+  {name:"Racecar Survival", img:"Arena.png", file:"game17.html", category:"Driving"},
+  {name:"Obby but you're on a Bike", img:"obby.png", file:"game18.html", category:"Action"},
+  {name:"Hollow Knight", img:"knight.png", file:"game19.html", category:"Action"},
+  {name:"Eddy's Carsim", img:"carsim.png", file:"carsim.html", category:"Driving"},
+  {name:"Eggy Car", img:"eggy.png", file:"eggy.html", category:"Driving"},
+  {name:"Basketball Random", img:"random.png", file:"Basketballrandom.html", category:"Sports"},
+  {name:"Pizza Tower", img:"pizza.png", file:"pizzatower.html", category:"Action"},
+  {name:"Bitlife", img:"bitlife.png", file:"bitlife.html", category:"Idle"},
+  {name:"Impossible Quiz", img:"impossible.png", file:"impossiblequiz.html", category:"Action"},
+  {name:"Solar Smash", img:"smash.png", file:"solarsmash.html", category:"Action"},
+  {name:"Thorns and Balloon", img:"thorns.png", file:"thorns.html", category:"Action"},
+  {name:"Escape Car", img:"escape.png", file:"escape.html", category:"Driving"},
+  {name:"Jetpack Joyride", img:"jetpack.png", file:"game20.html", category:"Action"},
+  {name:"Cargo Racing", img:"jeep.png", file:"cargoracing.html", category:"Driving"},
+  {name:"Cookie Clicker", img:"cookie.png", file:"game21.html", category:"Idle"},
+  {name:"Ragdoll", img:"archer.png", file:"archers.html", category:"Action"},
+  {name:"Retro Bowl", img:"ah.png", file:"retrobowl.html", category:"Sports"},
+  {name:"Police Chase Drift", img:"drifter.png", file:"drifter.html", category:"Driving"},
+  {name:"Slope", img:"slope.png", file:"slopetry4.html", category:"Action"},
+  {name:"Cluster Rush", img:"cluster.png", file:"cluster.html", category:"Action"},
+  {name:"Stickman Hook", img:"hook.png", file:"stickmanhook.html", category:"Action"},
+  {name:"Backrooms", img:"backrooms.png", file:"backrooms.html", category:"Action"},
+  {name:"Run 3", img:"run3.png", file:"run3.html", category:"Action"},
+  {name:"Snek.io", img:"snek.png", file:"snek.html", category:"Action"},
+  {name:"2048", img:"2048.png", file:"games/2048.html", category:"Action"},
+  {name:"Idle Restaurant", img:"idle.png", file:"idle.html", category:"Idle"},
+  {name:"Little Alchemy 2", img:"alchemy.png", file:"games/alchemy.html", category:"Puzzle"},
+  {name:"Watermelon Game", img:"watermelon.png", file:"games/watermelon.html", category:"Puzzle"},
+  {name:"Draw Climber", img:"drawclimber.png", file:"games/drawclimber.html", category:"Action"},
+  {name:"Checkout Frenzy", img:"checkout.png", file:"games/checkout.html", category:"Idle"}
+  {name:"Checkout Frenzy", img:"checkout.png", file:"games/checkout.html", category:"Idle"},
+   {name:"Checkout Frenzy", img:"checkout.png", file:"games/arrow.html", category:"Action"}
 ];
 
-const grid = document.getElementById("gameGrid");
-const filter = document.getElementById("categoryFilter");
+const container = document.getElementById("gamesContainer");
+const searchInput = document.getElementById("searchBar");
+const buttons = document.querySelectorAll(".category-buttons button");
+
+let currentCategory = "All";
+let searchTimeout;
+
+function getFilteredGames(){
+  const query = searchInput.value.toLowerCase();
+  return gamesList.filter(game =>
+    (currentCategory==="All" || game.category===currentCategory) &&
+    game.name.toLowerCase().includes(query)
+  );
+}
 
 function renderGames(){
-  grid.innerHTML="";
-  const selected = filter.value;
-  games
-    .filter(g => selected==="All" || g.category===selected)
-    .forEach(g=>{
-      const card=document.createElement("div");
-      card.className="card";
-      card.innerHTML=`
-        <img src="${g.img}">
-        <h3>${g.name}</h3>
-      `;
-      card.onclick=()=>openGame(g.file);
-      grid.appendChild(card);
-    });
+  const fragment = document.createDocumentFragment();
+  container.innerHTML="";
+
+  getFilteredGames().forEach(game=>{
+    const card=document.createElement("div");
+    card.className="game-card";
+
+    const link=document.createElement("a");
+    link.href=game.file;
+
+    const img=document.createElement("img");
+    img.src=game.img;
+    img.loading="lazy";
+    img.decoding="async";
+    img.alt=game.name;
+
+    link.appendChild(img);
+    card.appendChild(link);
+
+    const title=document.createElement("span");
+    title.textContent=game.name;
+    card.appendChild(title);
+
+    fragment.appendChild(card);
+  });
+
+  container.appendChild(fragment);
 }
 
-function openGame(file){
-  const modal = document.getElementById("modal");
-  const frame = document.getElementById("gameFrame");
-
-  frame.src = file;
-  modal.style.display = "flex";
-
-  console.log("Opening:", file); // debug check
-}
+function filterCategory(category){
+  currentCategory = category;
+  buttons.forEach(btn=>btn.classList.remove("active"));
+  event.target.classList.add("active");
+  renderGames();
 }
 
-function closeGame(){
-  document.getElementById("modal").style.display="none";
-  document.getElementById("gameFrame").src="";
-}
+searchInput.addEventListener("input", ()=>{
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(renderGames, 200);
+});
 
-function outsideClick(e){
-  if(e.target.id==="modal") closeGame();
-}
-
-function randomGame(){
+document.getElementById("randomGameBtn").addEventListener("click",()=>{
+  const games = getFilteredGames();
+  if(games.length===0) return;
   const random = games[Math.floor(Math.random()*games.length)];
-  openGame(random.file);
-}
+  window.location.href = random.file;
+});
 
-filter.addEventListener("change",renderGames);
 renderGames();
 </script>
 
