@@ -14,54 +14,70 @@ body {
   text-align: center;
 }
 
-h1 {
-  margin-top: 10px;
+/* BLUR EFFECT WHEN POPUP ACTIVE */
+.blur {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
 }
 
+/* POPUP OVERLAY (transparent, only for centering) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+}
+
+/* POPUP */
 .popup {
   background: #333;
   width: 90%;
   max-width: 500px;
   border-radius: 15px;
   padding: 20px;
-  border: 3px solid rgba(255,255,255,0.8);
-  box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.8),
-    0 0 20px rgba(255, 255, 255, 0.6),
-    inset 0 0 10px rgba(255, 255, 255, 0.4);
+  border: 3px solid white;
+
+  /* STRONG OUTER GLOW */
+  box-shadow:
+    0 0 25px white,
+    0 0 60px rgba(255,255,255,0.6),
+    0 0 100px rgba(255,255,255,0.3);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  position: relative;
+  animation: popIn 0.3s ease;
 }
 
-/* Image */
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: red;
+  transform: scale(1.2);
+}
+
+/* IMAGE */
 .popup img {
   width: 100%;
   max-height: 200px;
   object-fit: cover;
-    border: 2px solid transparent;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-  animation: pulse 2s ease-in-out infinite alternate;
+  border-radius: 12px;
 }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
-  100% { box-shadow: 0 0 20px rgba(255, 255, 255, 1); }
-
-/* Text */
-.popup h2 {
-  margin: 0;
-  color: white;
-}
-
-.popup p {
-  color: #ddd;
-  text-align: center;
-}
-  
+/* SEARCH BAR */
 #searchBar {
   padding: 12px 15px;
   width: 90%;
@@ -78,6 +94,7 @@ h1 {
   z-index: 999;
 }
 
+/* CATEGORY BUTTONS */
 .category-buttons {
   margin: 10px 0 20px;
 }
@@ -102,6 +119,7 @@ h1 {
   color: black;
 }
 
+/* RANDOM BUTTON */
 #randomGameBtn {
   padding: 8px 18px;
   border-radius: 6px;
@@ -116,6 +134,7 @@ h1 {
   background: #ff6b81;
 }
 
+/* GAMES GRID */
 .games-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -136,7 +155,6 @@ h1 {
   border-radius: 10px;
   border: 3px solid white;
   transition: 0.25s ease;
-  will-change: transform;
 }
 
 .game-card:hover img {
@@ -149,32 +167,47 @@ h1 {
   margin-top: 8px;
   font-weight: bold;
 }
+
+/* POP ANIMATION */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 </style>
 </head>
 
 <body>
 
+<div id="mainContent">
 <input type="text" id="searchBar" placeholder="Search games...">
 <h1>have fun yo ✌️💀</h1>
 
 <div class="category-buttons">
-  <button onclick="filterCategory('All')" class="active">All</button>
-  <button onclick="filterCategory('Driving')">Driving</button>
-  <button onclick="filterCategory('Sports')">Sports</button>
-  <button onclick="filterCategory('Action')">Action</button>
-  <button onclick="filterCategory('Idle')">Idle</button>
-   <button onclick="filterCategory('Puzzle')">Puzzle</button>
+  <button onclick="filterCategory('All', event)" class="active">All</button>
+  <button onclick="filterCategory('Driving', event)">Driving</button>
+  <button onclick="filterCategory('Sports', event)">Sports</button>
+  <button onclick="filterCategory('Action', event)">Action</button>
+  <button onclick="filterCategory('Idle', event)">Idle</button>
+  <button onclick="filterCategory('Puzzle', event)">Puzzle</button>
 </div>
-  <div class="popup">
-    <div>
-      <img src="thanos-dance.png">
-      (h2)Wassup yo(/h2)
-      (p)Hey guys shout out to everyone that helped make this, and shout out to ahmed. Dont tell vyon and have fun cuh. ✌️
-    </div>
 
 <button id="randomGameBtn">🎲 Play Random</button>
 
 <div class="games-container" id="gamesContainer"></div>
+</div>
+
+<!-- POPUP -->
+<div class="overlay" id="popupOverlay" onclick="outsideClick(event)">
+  <div class="popup">
+    <div class="close-btn" onclick="closePopup()">✖</div>
+    <img src="thanos-dance.png">
+    <h2>Wassup yo</h2>
+    <p>
+      Hey guys shout out to everyone that helped make this,
+      and shout out to ahmed. Dont tell vyon and have fun cuh. ✌️
+    </p>
+  </div>
+</div>
 
 <script>
 const gamesList = [
@@ -222,15 +255,13 @@ const gamesList = [
   {name:"Idle Restaurant", img:"idle.png", file:"idle.html", category:"Idle"},
   {name:"Little Alchemy 2", img:"alchemy.png", file:"games/alchemy.html", category:"Puzzle"},
   {name:"Watermelon Game", img:"watermelon.png", file:"games/watermelon.html", category:"Puzzle"},
-  {name:"Draw Climber", img:"drawclimber.png", file:"games/drawclimber.html", category:"Action"},
+  {name:"Draw Climber", img:"drawclimber.png", file:"games/drawclimber.html", category:"Action"}
 ];
 
 const container = document.getElementById("gamesContainer");
 const searchInput = document.getElementById("searchBar");
 const buttons = document.querySelectorAll(".category-buttons button");
-
 let currentCategory = "All";
-let searchTimeout;
 
 function getFilteredGames(){
   const query = searchInput.value.toLowerCase();
@@ -241,9 +272,7 @@ function getFilteredGames(){
 }
 
 function renderGames(){
-  const fragment = document.createDocumentFragment();
   container.innerHTML="";
-
   getFilteredGames().forEach(game=>{
     const card=document.createElement("div");
     card.className="game-card";
@@ -253,8 +282,6 @@ function renderGames(){
 
     const img=document.createElement("img");
     img.src=game.img;
-    img.loading="lazy";
-    img.decoding="async";
     img.alt=game.name;
 
     link.appendChild(img);
@@ -264,23 +291,16 @@ function renderGames(){
     title.textContent=game.name;
     card.appendChild(title);
 
-    fragment.appendChild(card);
+    container.appendChild(card);
   });
-
-  container.appendChild(fragment);
 }
 
-function filterCategory(category){
+function filterCategory(category, event){
   currentCategory = category;
   buttons.forEach(btn=>btn.classList.remove("active"));
   event.target.classList.add("active");
   renderGames();
 }
-
-searchInput.addEventListener("input", ()=>{
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(renderGames, 200);
-});
 
 document.getElementById("randomGameBtn").addEventListener("click",()=>{
   const games = getFilteredGames();
@@ -288,6 +308,21 @@ document.getElementById("randomGameBtn").addEventListener("click",()=>{
   const random = games[Math.floor(Math.random()*games.length)];
   window.location.href = random.file;
 });
+
+searchInput.addEventListener("input", renderGames);
+
+function closePopup(){
+  document.getElementById("popupOverlay").style.display="none";
+  document.getElementById("mainContent").classList.remove("blur");
+}
+
+function outsideClick(e){
+  if(e.target.id==="popupOverlay"){
+    closePopup();
+  }
+}
+
+document.getElementById("mainContent").classList.add("blur");
 
 renderGames();
 </script>
