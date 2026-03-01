@@ -26,7 +26,7 @@ header nav a:hover { text-decoration: underline; }
 .courses h2 { margin-bottom: 30px; }
 .card-container {
   display: flex;
-  justify-content: space-between;
+  gap:40px;
   flex-wrap: nowrap; /* single horizontal line */
   overflow-x: auto;
   padding-bottom: 20px;
@@ -34,7 +34,7 @@ header nav a:hover { text-decoration: underline; }
 }
 .card-container::-webkit-scrollbar { display: none; }
 
-.card { background: #62798d; width: 200px; border-radius: 8px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer; transition: transform 0.3s ease; flex-shrink: 0; }
+.card { background: #62798d; width: 300px; border-radius: 8px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer; transition: transform 0.3s ease; flex-shrink: 0; }
 .card:hover { transform: scale(1.1); }
 .card-top { background: #9ca3af; padding: 80px; text-align: center; font-weight: bold; }
 .card-body { padding: 20px; }
