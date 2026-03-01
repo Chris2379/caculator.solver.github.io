@@ -21,59 +21,27 @@ header nav a:hover { text-decoration: underline; }
 .hero button { background: #f97316; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: transform 0.25s ease; }
 .hero button:hover { background: #d9690d; transform: scale(1.05); }
 
-.courses {
-  padding: 60px 40px;
-}
-
-.courses h2 {
-  margin-bottom: 30px;
-}
-
+.courses { padding: 60px 20px; }
+.courses h2 { margin-bottom: 30px; }
 .card-container {
   display: flex;
-  gap: 200px;
-  flex-wrap: wrap;
+  gap: 20px;
+  flex-wrap: nowrap; /* single horizontal line */
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
 }
+.card-container::-webkit-scrollbar { display: none; }
 
-.card {
-  background: #62798d;
-  width: 300px;
-  border-radius: 8px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-  .card:hover {
-     transform: scale(1.2); }
-    
-
-.card-top {
-  background: #9ca3af;
-  padding: 80px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.card-body {
-  padding: 20px;
-}
-
-.card-body h3 {
-  margin-bottom: 10px;
-}
+.card { background: #62798d; width: 300px; border-radius: 8px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer; transition: transform 0.3s ease; flex-shrink: 0; }
+.card:hover { transform: scale(1.1); }
+.card-top { background: #9ca3af; padding: 80px; text-align: center; font-weight: bold; }
+.card-body { padding: 20px; }
+.card-body h3 { margin-bottom: 10px; }
 
 /* ABOUT + CONTACT */
-.about,
-.contact {
-  padding: 40px;
-}
-
-.about h2,
-.contact h2 {
-  margin-bottom: 15px;
-}
+.about, .contact { padding: 40px; }
+.about h2, .contact h2 { margin-bottom: 15px; }
 
 /* GAME APP SECTION (hidden initially) */
 #gameApp { display: none; background: #111; color: white; text-align: center; min-height: 100vh; padding: 20px; }
@@ -114,112 +82,92 @@ header nav a:hover { text-decoration: underline; }
 </head>
 <body>
 
-<!-- NAVBAR -->
-<header>
-  <div class="logo">Calculators</div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Courses</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </nav>
-</header>
+<!-- LANDING PAGE -->
+<div id="landingPage">
+  <header>
+    <div class="logo">Calculators</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section class="hero" id="heroSection">
-  <h1>Edu Calculators</h1>
-  <p>Enjoy our army of calculators for different tasks</p>
-  <button id="signupBtn">Sign Up</button>
-</section>
+  <section class="hero" id="heroSection">
+    <h1>Edu Calculators</h1>
+    <p>Enjoy our army of calculators for different tasks</p>
+    <button id="signupBtn">Sign Up</button>
+  </section>
 
   <section class="courses">
-  <h2>Popular Caculators</h2>
-
-  <div class="card-container">
-    <div class="card">
-      <div class="card-top">Code</div>
-      <div class="card-body">
-        <h3>Code Calculators AI</h3>
-        <p>This amazing calculator helps with many different coding tasks</p>
+    <h2>Popular Calculators</h2>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-top">Code</div>
+        <div class="card-body"><h3>Code Calculators AI</h3><p>This amazing calculator helps with many coding tasks</p></div>
+      </div>
+      <div class="card">
+        <div class="card-top">Math</div>
+        <div class="card-body"><h3>Math</h3><p>This calculator works for advanced math equations</p></div>
+      </div>
+      <div class="card">
+        <div class="card-top">Financial</div>
+        <div class="card-body"><h3>Financial</h3><p>Unleash creativity with design principles and modern tools.</p></div>
       </div>
     </div>
+  </section>
 
-    <div class="card">
-      <div class="card-top">Math</div>
-      <div class="card-body">
-        <h3>Math</h3>
-        <p>This calculator works for advanced mathmatical equations</p>
-      </div>
-    </div>
+  <section class="about">
+    <h2>About Us</h2>
+    <p>Edu calcs are all about helping the community for free. Just sign up and get started!</p>
+  </section>
 
-    <div class="card">
-      <div class="card-top">Financial</div>
-      <div class="card-body">
-        <h3>Financial</h3>
-        <p>Unleash your creativity with design principles and modern tools.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Don't</p>
+  </section>
+</div>
 
-<!-- ABOUT -->
-<section class="about">
-  <h2>About Us</h2>
-  <p>
-   Edu calcs are all about helping the community for free. We offer many free calculators for all, for free. Just sign up and get started!
-  </p>
-</section>
-
-<!-- CONTACT -->
-<section class="contact">
-  <h2>Contact Us</h2>
-  <p>Dont</p>
-</section>
-  
-
-<!-- GAME APP SECTION -->
+<!-- GAME APP -->
 <section id="gameApp">
-<input type="text" id="searchBar" placeholder="Search games...">
-<h1>Have fun yo ✌️💀</h1>
+  <input type="text" id="searchBar" placeholder="Search games...">
+  <h1>Have fun yo ✌️💀</h1>
 
-<div class="category-buttons">
-  <button onclick="filterCategory('All')" class="active">All</button>
-  <button onclick="filterCategory('Driving')">Driving</button>
-  <button onclick="filterCategory('Sports')">Sports</button>
-  <button onclick="filterCategory('Action')">Action</button>
-  <button onclick="filterCategory('Idle')">Idle</button>
-  <button onclick="filterCategory('Puzzle')">Puzzle</button>
-</div>
-
-<button id="randomGameBtn">🎲 Play Random</button>
-
-<div class="backblur" id="popupBg">
-  <div class="popup">
-    <div class="closebutton" onclick="closePopup()">✖</div>
-    <img src="thanos-dance.png" alt="Game Image">
-    <h2>Wassup guys</h2>
-    <p>Welcome to my game app, don't get caught, dont tell Vyon and shout out to Maurico/Mario, Very Ahmed, Abowiyusuf, and Shubhy</p>
+  <div class="category-buttons">
+    <button onclick="filterCategory('All')" class="active">All</button>
+    <button onclick="filterCategory('Driving')">Driving</button>
+    <button onclick="filterCategory('Sports')">Sports</button>
+    <button onclick="filterCategory('Action')">Action</button>
+    <button onclick="filterCategory('Idle')">Idle</button>
+    <button onclick="filterCategory('Puzzle')">Puzzle</button>
   </div>
-</div>
 
-<div class="games-container" id="gamesContainer"></div>
+  <button id="randomGameBtn">🎲 Play Random</button>
+
+  <div class="backblur" id="popupBg">
+    <div class="popup">
+      <div class="closebutton" onclick="closePopup()">✖</div>
+      <img src="thanos-dance.png" alt="Game Image">
+      <h2>Wassup guys</h2>
+      <p>Welcome to my game app, don't get caught, shout out to Maurico/Mario, Very Ahmed, Abowiyusuf, and Shubhy</p>
+    </div>
+  </div>
+
+  <div class="games-container" id="gamesContainer"></div>
 </section>
 
 <script>
 /* SHOW GAME APP ON SIGNUP */
 document.getElementById("signupBtn").addEventListener("click", () => {
-  document.getElementById("heroSection").style.display = "none";
-  document.getElementById("gameApp").style.display = "block";
+  document.getElementById("landingPage").style.display = "none"; // hide entire landing
+  document.getElementById("gameApp").style.display = "block";    // show game section
   document.getElementById("popupBg").classList.add("active");
-
-  // Scroll to the game app section smoothly
   document.getElementById("gameApp").scrollIntoView({ behavior: "smooth" });
 });
 
 /* POPUP */
-function closePopup() {
-  document.getElementById("popupBg").classList.remove("active");
-}
+function closePopup() { document.getElementById("popupBg").classList.remove("active"); }
 
 /* ALL GAMES LIST */
 const gamesList = [
@@ -278,14 +226,13 @@ const gamesList = [
 
 /* DOM ELEMENTS */
 const container = document.getElementById("gamesContainer");
-const searchInput = document.getElementById("searchBar");
 const buttons = document.querySelectorAll(".category-buttons button");
 let currentCategory = "All";
 let searchTimeout;
 
 /* RENDER */
 function getFilteredGames(){
-  const query = searchInput.value.toLowerCase();
+  const query = document.getElementById("searchBar").value.toLowerCase();
   return gamesList.filter(game =>
     (currentCategory==="All" || game.category===currentCategory) &&
     game.name.toLowerCase().includes(query)
@@ -329,7 +276,7 @@ function filterCategory(category){
 }
 
 /* SEARCH */
-searchInput.addEventListener("input", () => {
+document.getElementById("searchBar").addEventListener("input", () => {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(renderGames, 200);
 });
