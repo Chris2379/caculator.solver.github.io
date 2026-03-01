@@ -21,6 +21,54 @@ header nav a:hover { text-decoration: underline; }
 .hero button { background: #f97316; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: transform 0.25s ease; }
 .hero button:hover { background: #d9690d; transform: scale(1.05); }
 
+.courses {
+  padding: 60px 40px;
+}
+
+.courses h2 {
+  margin-bottom: 30px;
+}
+
+.card-container {
+  display: flex;
+  gap: 200px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #62798d;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.card-top {
+  background: #9ca3af;
+  padding: 80px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h3 {
+  margin-bottom: 10px;
+}
+
+/* ABOUT + CONTACT */
+.about,
+.contact {
+  padding: 40px;
+}
+
+.about h2,
+.contact h2 {
+  margin-bottom: 15px;
+}
+
 /* GAME APP SECTION (hidden initially) */
 #gameApp { display: none; background: #111; color: white; text-align: center; min-height: 100vh; padding: 20px; }
 
@@ -77,6 +125,51 @@ header nav a:hover { text-decoration: underline; }
   <p>Enjoy our army of calculators for different tasks</p>
   <button id="signupBtn">Sign Up</button>
 </section>
+
+  <section class="courses">
+  <h2>Popular Caculators</h2>
+
+  <div class="card-container">
+    <div class="card">
+      <div class="card-top">Code</div>
+      <div class="card-body">
+        <h3>Code Calculators AI</h3>
+        <p>This amazing calculator helps with many different coding tasks</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">Data</div>
+      <div class="card-body">
+        <h3>Math</h3>
+        <p>This calculator works for advanced mathmatical equations</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">Design</div>
+      <div class="card-body">
+        <h3>Financial</h3>
+        <p>Unleash your creativity with design principles and modern tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2>About Us</h2>
+  <p>
+   Edu calcs are all about helping the community for free. We offer many free calculators for all, for free. Just sign up and get started!
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <h2>Contact Us</h2>
+  <p>Dont</p>
+</section>
+  
 
 <!-- GAME APP SECTION -->
 <section id="gameApp">
