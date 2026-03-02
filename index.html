@@ -52,6 +52,18 @@ header nav a:hover { text-decoration: underline; }
 #signinPopup .popup { background: #222; color: white; border: 2px solid white; }
 #signinPopup input { width: 80%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #fff; background: #111; color: white; }
 
+  .signinContinue {
+    width: 90%;
+    max-width: 30px;
+    height: 90%;
+    max-height: 25px;
+    background: orange;
+    cursor: pointer;
+    transition: transform 0.6s ease;
+  }
+
+.closebutton:hover { transform: scale(1.2); opacity: 1.15; }    
+
 /* GAME APP */
 #gameApp { display: none; background: #111; color: white; text-align: center; min-height: 100vh; padding: 20px; }
 #searchBar { padding: 12px 15px; width: 90%; max-width: 500px; margin: 20px auto; display: block; font-size: 16px; border-radius: 8px; border: 2px solid #fff; background: #222; color: white; position: sticky; top: 0; z-index: 999; }
@@ -140,14 +152,14 @@ header nav a:hover { text-decoration: underline; }
     <span class="closebutton" onclick="welcomePopup.classList.remove('active')">✖</span>
     <img src="thanos-dance.png" alt="Game Image">
     <h2>Wassup guys</h2>
-    <p>Welcome to my game app! Shoutout to Maurico, Ahmet Ozdugyan, Abowiyusuf, Shubhy</p>
+    <p>Welcome to my game app! Shoutout to Maurico, Very Ahmet Ozdugyan, Abowiyusuf, Shubhy</p>
   </div>
 </div>
 
 <!-- GAME APP -->
 <section id="gameApp">
   <input type="text" id="searchBar" placeholder="Search games...">
-  <h1>Have fun! ✌️🥀</h1>
+  <h1>Have fun yo ✌️🥀</h1>
 
   <div class="category-buttons">
     <button onclick="filterCategory('All', event)" class="active">All</button>
