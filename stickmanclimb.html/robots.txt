@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://igames.netlify.app/sitemap.xml
